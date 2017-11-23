@@ -6,6 +6,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mka.AppConfig;
+import com.mka.SecurityConfiguration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.client.AutoConfigureWebClient;
@@ -16,11 +17,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 @AutoConfigureWebClient
 @AutoConfigureMockMvc
 @SpringBootTest(classes = {
-        AppConfig.class
+        AppConfig.class,
+        SecurityConfiguration.class
 })
 public class AbstactControllerTest {
 
-	@Autowired
+
     protected MockMvc mockMvc;
     @Autowired
     protected ObjectMapper mapper;

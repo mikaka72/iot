@@ -1,7 +1,9 @@
 package com.mka.service.impl;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -27,11 +29,9 @@ public class IotPingService implements PingService {
 	public PingResult storePing(String ip, String message) {
 		PingResult result = new PingResult()
 		.setIpAddress(ip)
-		.setMessage(message)
-		.setTime(LocalDateTime.now());
+		.setMessage(message);
 		PingRow row = pingRepository.save(pingResultMapper.create(result));
-		result.setId(row.getId());
-		return result;
+		return pingResultMapper.createResult(row);
 	}
 
 	@Override

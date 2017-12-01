@@ -1,9 +1,8 @@
 package com.mka.models;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.UUID;
+
+import com.mka.entity.ClientType;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,12 +13,11 @@ import lombok.experimental.Accessors;
 @Setter
 @NoArgsConstructor
 @Accessors(chain = true)
-public class PingResult {
 
-	private String id;
-	private String ipAddress;
-	private String message;
-	private String time;
-	private UUID clientId;
+public class ClientModel {
+
+	UUID clientId;
+	String description;
+	ClientType clientType;
 	
 }

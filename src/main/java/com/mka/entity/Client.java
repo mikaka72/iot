@@ -2,8 +2,6 @@ package com.mka.entity;
 
 import java.util.UUID;
 
-import org.springframework.data.annotation.Id;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,12 +11,14 @@ import lombok.experimental.Accessors;
 @Setter
 @NoArgsConstructor
 @Accessors(chain = true)
-public class PingRow {
-	@Id
-	private String id;
-	private String ipAddress;
-	private String message;
-	private long time;
-	private UUID clientId;
+public class Client {
+
+	UUID clientId;
+	String description;
+	ClientType clientType;
+
+	public static UUID generateId() {
+		return UUID.randomUUID();
+	}
 	
 }

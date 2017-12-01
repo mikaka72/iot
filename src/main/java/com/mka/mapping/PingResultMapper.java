@@ -15,8 +15,6 @@ import org.springframework.stereotype.Component;
 import com.mka.entity.PingRow;
 import com.mka.models.PingResult;
 
-import groovy.lang.DelegatesTo.Target;
-
 
 @Component
 public class PingResultMapper {

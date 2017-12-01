@@ -66,7 +66,7 @@ public class PingControllerTest {
 	public void testPing() throws Exception{
 		
 		
-		mockMvc.perform(get("/pings/d82370db-4425-4665-848b-24ce23563527/testing"))
+		mockMvc.perform(get("/ping/d82370db-4425-4665-848b-24ce23563527/testing"))
 		.andExpect(status().isOk());
 				
 	}

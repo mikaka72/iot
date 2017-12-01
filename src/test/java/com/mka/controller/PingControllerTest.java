@@ -65,20 +65,9 @@ public class PingControllerTest {
 	@Test
 	public void testPing() throws Exception{
 		
-		SimpleDateFormat formatter = new SimpleDateFormat("dd MM yyyy HH:mm:ss");
-		//when(this.schemaDao.createNewSchemaEntry(any(PackSchema.class))).thenReturn(SchemaMocks.getPackCloneSchemaMock());
-		 when(pingService.storePing(any(String.class), any(String.class))).thenReturn(new PingResult()
-					.setIpAddress("1.1.1.1")
-					.setMessage("testing")
-					.setTime(formatter.format(Date.from(Instant.now()))));
 		
-		mockMvc.perform(get("/ping/testing"))
+		mockMvc.perform(get("/pings/d82370db-4425-4665-848b-24ce23563527/testing"))
 		.andExpect(status().isOk());
-		/*
-		.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
-		.andExpect(jsonPath("$", hasKey("ipAddress")))
-		.andExpect(jsonPath("$", hasKey("message")))
-		.andExpect(jsonPath("$", hasKey("time")));*/
 				
 	}
 	

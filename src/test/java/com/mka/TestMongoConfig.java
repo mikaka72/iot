@@ -25,11 +25,11 @@ public class TestMongoConfig {
 	
 	@Bean
 	public MongoTemplate mongoTemplate() throws Exception {
-		log.info("############################################################");
-		log.info("#           Embedded mongo db in use                       #");
-		log.info("#                                                          #");
-		log.info("#           All data is lost in restart!                   #");
-		log.info("############################################################");
+		log.info("############################################");
+		log.info("# Embedded mongo db in use                 #");
+		log.info("#                                          #");
+		log.info("# All data is lost in after tests are run! #");
+		log.info("############################################");
 		EmbeddedMongoFactoryBean mongo = new EmbeddedMongoFactoryBean();
 		mongo.setBindIp(host);
 		MongoClient mongoClient = mongo.getObject();

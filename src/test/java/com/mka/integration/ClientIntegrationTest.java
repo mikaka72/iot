@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import com.mka.AppConfig;
+import com.mka.TestConfig;
 import com.mka.controller.ClientController;
 import com.mka.entity.ClientType;
 import com.mka.models.ClientModel;
@@ -23,7 +24,7 @@ import com.mka.models.CreateClientModel;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Import(AppConfig.class)
+@Import(TestConfig.class)
 @TestPropertySource("classpath:test.properties")
 public class ClientIntegrationTest {
 	

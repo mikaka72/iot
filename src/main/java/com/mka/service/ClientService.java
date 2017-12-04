@@ -11,6 +11,7 @@ public interface ClientService {
 	public ClientModel createClient(CreateClientModel clientModel);
 	public ClientModel getClient(UUID id);
 	public List<ClientModel> getClients();
+	public long deleteClient(UUID id);
 	
 	
 }

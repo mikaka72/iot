@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +28,7 @@ public class ClientController {
 	
 	@PostMapping("/client")
 	@ApiOperation(value = "Creates new client with given type and returns the UUID", response = ClientModel.class)
-	ClientModel createClient( @RequestBody final CreateClientModel clientModel) {
+	public ClientModel createClient( @RequestBody final CreateClientModel clientModel) {
 		
 		return clientService.createClient(clientModel);
 		
@@ -35,7 +36,7 @@ public class ClientController {
 	
 	@GetMapping("/client/{id}")
 	@ApiOperation(value = "get Client with id")
-	ClientModel getClient(@PathVariable final UUID id) {
+	public ClientModel getClient(@PathVariable final UUID id) {
 		
 		return clientService.getClient(id);
 		
@@ -44,9 +45,16 @@ public class ClientController {
 	
 	@GetMapping("/clients")
 	@ApiOperation(value = "get all Clients ")
-	List<ClientModel> getClients() {
+	public List<ClientModel> getClients() {
 		
 		return clientService.getClients();
 		
     }
+	
+	@DeleteMapping("/client/{id}")
+	public long deleteClient(@PathVariable final UUID id) {
+		
+		return clientService.deleteClient(id);
+		
+	}
 }

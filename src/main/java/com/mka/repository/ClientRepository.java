@@ -9,7 +9,7 @@ import com.mka.entity.Client;
 public interface ClientRepository extends MongoRepository<Client, String>{
 
 	Client findByClientId(UUID id);
-
+	long deleteByClientId(UUID id);
 	
 	
 }

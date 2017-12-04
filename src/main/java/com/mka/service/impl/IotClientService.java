@@ -48,4 +48,10 @@ public class IotClientService implements ClientService {
 		return clients;
 	}
 
+	@Override
+	public long deleteClient(UUID id) {
+		return clientRepository.deleteByClientId(id);
+		
+	}
+
 }

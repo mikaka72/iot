@@ -2,9 +2,7 @@ package com.mka.controller;
 
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
-import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,11 +22,9 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 
-import com.mka.entity.Client;
 import com.mka.entity.ClientType;
 import com.mka.models.ClientModel;
 import com.mka.models.CreateClientModel;
-import com.mka.models.PingResult;
 import com.mka.service.ClientService;
 
 public class ClientControllerTest extends AbstractApiTest {

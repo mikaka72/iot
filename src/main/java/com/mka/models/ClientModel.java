@@ -13,7 +13,6 @@ import lombok.experimental.Accessors;
 @Setter
 @NoArgsConstructor
 @Accessors(chain = true)
-
 public class ClientModel {
 
 	UUID clientId;

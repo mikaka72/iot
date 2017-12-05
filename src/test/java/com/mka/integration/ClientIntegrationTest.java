@@ -1,7 +1,6 @@
 package com.mka.integration;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -9,12 +8,6 @@ import static org.junit.Assert.assertTrue;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit4.SpringRunner;
-import com.mka.AppConfig;
-import com.mka.TestConfig;
 import com.mka.controller.ClientController;
 import com.mka.entity.ClientType;
 import com.mka.models.ClientModel;
@@ -22,11 +15,8 @@ import com.mka.models.CreateClientModel;
 
 
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@Import(TestConfig.class)
-@TestPropertySource("classpath:test.properties")
-public class ClientIntegrationTest {
+
+public class ClientIntegrationTest extends AbstractIntegrationTest {
 	
 	@Autowired
 	private ClientController clientController;

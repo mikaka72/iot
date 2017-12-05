@@ -1,11 +1,5 @@
 package com.mka.mapper;
 
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
-
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.util.Date;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import org.junit.Before;
@@ -19,7 +13,6 @@ import com.mka.entity.PingRow;
 import com.mka.mapping.PingResultMapper;
 import com.mka.models.PingResult;
 
-import ch.qos.logback.classic.Logger;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -57,8 +50,6 @@ public class PingResultMapperTest extends AbstractApiTest {
 	
 	@Test
 	public void testCreate() {
-		
-		SimpleDateFormat formatter = new SimpleDateFormat("dd MM yyyy HH:mm:ss");
 		
 		PingResult result = new PingResult()
 				.setClientId(Client.generateId())

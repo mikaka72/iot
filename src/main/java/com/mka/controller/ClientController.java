@@ -1,10 +1,8 @@
 package com.mka.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mka.entity.Client;
 import com.mka.models.ClientModel;
 import com.mka.models.CreateClientModel;
 import com.mka.service.ClientService;

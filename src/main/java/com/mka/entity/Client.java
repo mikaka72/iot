@@ -19,7 +19,8 @@ public class Client {
 	UUID clientId;
 	String description;
 	ClientType clientType;
-
+	
+	
 	public static UUID generateId() {
 		return UUID.randomUUID();
 	}

@@ -21,14 +21,18 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mka.entity.ClientType;
 import com.mka.models.ClientModel;
 import com.mka.models.CreateClientModel;
 import com.mka.service.ClientService;
 
-public class ClientControllerTest extends AbstractApiTest {
+public class ClientControllerTest /*extends AbstractApiTest*/ {
 
+	protected MockMvc mockMvc;
+	protected ObjectMapper objectMapper;
 	@InjectMocks
 	private ClientController clientController;
 	
@@ -40,6 +44,7 @@ public class ClientControllerTest extends AbstractApiTest {
 		
 		MockitoAnnotations.initMocks(this);
 		mockMvc = standaloneSetup(clientController).build();
+		objectMapper = new ObjectMapper();
 		
 	}
 	
@@ -52,7 +57,7 @@ public class ClientControllerTest extends AbstractApiTest {
 		.thenReturn(new ClientModel());
 				
 		
-		mockMvc.perform(post("/client")
+		mockMvc.perform(post("/api/v1/client")
 				.contentType(MediaType.APPLICATION_JSON_UTF8)
 				.content(objectMapper.writeValueAsString(model)))
 				.andExpect(status().isOk())
@@ -68,7 +73,7 @@ public class ClientControllerTest extends AbstractApiTest {
 		when(clientService.getClient(any(UUID.class)))
 		.thenReturn(new ClientModel());
 		
-		mockMvc.perform(get("/client/29f3c684-7629-472e-aab1-305e662aaae0")
+		mockMvc.perform(get("/api/v1/client/29f3c684-7629-472e-aab1-305e662aaae0")
 		.contentType(MediaType.APPLICATION_JSON_UTF8))
 		.andExpect(status().isOk())
 		.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
@@ -84,7 +89,7 @@ public class ClientControllerTest extends AbstractApiTest {
 		when(clientService.getClients())
 		.thenReturn(getClientModelList());
 		
-		mockMvc.perform(get("/clients")
+		mockMvc.perform(get("/api/v1/clients")
 		.contentType(MediaType.APPLICATION_JSON_UTF8))
 		.andExpect(status().isOk())
 		.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))

@@ -14,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mka.AppConfig;
 import com.mka.SecurityConfiguration;
 import com.mka.service.PingService;
@@ -21,13 +22,6 @@ import com.mka.service.PingService;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@AutoConfigureWebClient
-@AutoConfigureMockMvc
-@SpringBootTest(classes = {
-        AppConfig.class,
-        SecurityConfiguration.class
-})
 public class PingControllerTest {
 
 	@InjectMocks
@@ -37,7 +31,7 @@ public class PingControllerTest {
 	private PingService pingService;
 	
 	protected MockMvc mockMvc;
-   
+	
 	@Before
 	public void before() {
 		
@@ -49,7 +43,7 @@ public class PingControllerTest {
 	@Test
 	public void testPing() throws Exception{
 		
-		mockMvc.perform(get("/ping/d82370db-4425-4665-848b-24ce23563527/testing"))
+		mockMvc.perform(get("/api/v1/ping/d82370db-4425-4665-848b-24ce23563527/testing"))
 		.andExpect(status().isOk());
 				
 	}

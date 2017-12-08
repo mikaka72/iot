@@ -4,6 +4,9 @@ package com.mka.integration;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
+
+import java.util.List;
+
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -17,15 +20,13 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import com.mka.TestConfig;
 import com.mka.controller.UserController;
+import com.mka.entity.User;
 import com.mka.models.CreateUserModel;
 import com.mka.models.UserModel;
 import com.mka.repository.UserRepository;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@Import(TestConfig.class)
-@TestPropertySource("classpath:test.properties")
-public class UserIntegrationTest {
+
+public class UserIntegrationTest extends AbstractIntegrationTest  {
 
 	@Autowired
 	private UserController userController;
@@ -78,7 +79,7 @@ public class UserIntegrationTest {
 		} catch(OptimisticLockingFailureException e) {
 			// ok..
 		}
-		
+		List<User> users = userRepository.findAll();
 		userController.deleteUser(updatedUser.getId());
 		
 		try {
@@ -89,6 +90,7 @@ public class UserIntegrationTest {
 		}
 		
 		// Just check that there are no extra users created into the db during test..
+		 users = userRepository.findAll();
 		assertEquals(0, userRepository.findAll().size());
 		
 	}

@@ -12,20 +12,21 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
+@RequestMapping("/api/v1/")
 @Slf4j
 public class PingController {
 	
-	final PingService pingService;
-	
-	public PingController(final PingService pingService) {
-		this.pingService= pingService;
-	}
+	@Autowired
+    private PingService pingService;
+
 	
 	@GetMapping("/ping/{id}/{message}")
 	@ApiOperation(value = "Ping with id and message that is stored with ip and timestamp, returns Ping result.", response = PingResult.class)

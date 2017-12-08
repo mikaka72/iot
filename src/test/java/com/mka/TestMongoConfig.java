@@ -1,5 +1,8 @@
 package com.mka;
 
+import java.io.File;
+import java.nio.file.Files;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -30,6 +33,8 @@ public class TestMongoConfig {
 		log.info("#                                          #");
 		log.info("# All data is lost in after tests are run! #");
 		log.info("############################################");
+		
+		
 		EmbeddedMongoFactoryBean mongo = new EmbeddedMongoFactoryBean();
 		mongo.setBindIp(host);
 		MongoClient mongoClient = mongo.getObject();
@@ -37,5 +42,7 @@ public class TestMongoConfig {
 		return mongoTemplate; 
 
 	}
+	
+	
  
 }
